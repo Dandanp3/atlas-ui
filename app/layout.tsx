@@ -19,9 +19,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning className="bg-background">
-      <body>
-        <ThemeProvider>
+      <body className="font-sans antialiased min-h-screen">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Header/>
+          <main className="">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

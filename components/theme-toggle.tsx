@@ -9,8 +9,20 @@ export function ThemeToggle() {
     const { theme, setTheme } = useTheme()
 
     return(
-        <Button>
-            
+        <Button
+        variant='outline'
+        size="icon"
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        className="relative overflow-hidden cursor-pointer">
+            <motion.div
+                initial={false}
+                animate={{ rotate: theme === "dark" ? 180: 0}}
+                transition={{ duration: 0.3, ease: "easeInOut"}}
+            >
+                <Sun/>
+                <Moon/>
+            </motion.div>
+            <span>Alterar Tema</span>
         </Button>
     )
 
