@@ -4,8 +4,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { Country } from "@/types/country"
 import { CountryCardSkeleton } from "./country-card-skeleton"
 import { AlertCircle, SearchX} from "lucide-react"
-import { div } from "framer-motion/client"
-import { count } from "console"
+import { CountryCard } from "./country-card"
 
 interface CountryGridProps {
     countries: Country[]
@@ -50,7 +49,14 @@ export function CountryGrid({ countries, isLoading, error} : CountryGridProps) {
 
     return (
         <motion.div>
-            <AnimatePresence>
+            <AnimatePresence mode="popLayout">
+                {countries.map((country, index) => (
+                    <CountryCard
+                    key={country.cca3}
+                    country={country}
+                    index={index % 12}
+                    />
+                ))}
             </AnimatePresence>
         </motion.div>
     )
