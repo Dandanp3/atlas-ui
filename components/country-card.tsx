@@ -68,6 +68,5 @@ export function CountryCard({ country, index}: CountryCardProps) {
                 </motion.article>
             </Link>
         </motion.div>
-
     )
 }

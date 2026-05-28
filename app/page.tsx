@@ -6,6 +6,7 @@ import { CountryGrid } from "@/components/country-grid"
 import { Country } from "@/types/country"
 import { getAllCountries } from "@/lib/api"
 import { count } from "console"
+import { SearchFilter } from "@/components/search-filter"
 
 export default function HomePage() {
   const [countries, setCountries] = useState<Country[]>([])
@@ -55,6 +56,13 @@ export default function HomePage() {
         <h1>Explore o Mundo</h1>
         <p>Descubra informações sobre {countries.length > 0 ? countries.length : "250+"} países</p>
       </motion.div>
+
+      <SearchFilter
+        search={search}
+        onSearchChange={setSearch}
+        region={region}
+        onRegionChange={setRegion}
+        />
 
       <CountryGrid
       countries={filteredCountries}

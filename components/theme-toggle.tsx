@@ -19,10 +19,10 @@ export function ThemeToggle() {
                 animate={{ rotate: theme === "dark" ? 180: 0}}
                 transition={{ duration: 0.3, ease: "easeInOut"}}
             >
-                <Sun/>
-                <Moon/>
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"/>
+                <Moon className="absolute top-1/2 left-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rotate-90 scale-0 transition-all dark:rotate-180 dark:scale-100"/>
             </motion.div>
-            <span>Alterar Tema</span>
+            <span className="sr-only">Alterar Tema</span>
         </Button>
     )
 
