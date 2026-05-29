@@ -19,7 +19,7 @@ export interface Country {
         png: string
         alt?: string
     }
-    language?: {
+    languages?: {
         [key: string]: string
     }
     currencies?: {
