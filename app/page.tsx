@@ -2,11 +2,10 @@
 
 import { useState, useEffect, useMemo } from "react"
 import { motion } from "framer-motion"
+import { SearchFilter } from "@/components/search-filter"
 import { CountryGrid } from "@/components/country-grid"
 import { Country } from "@/types/country"
 import { getAllCountries } from "@/lib/api"
-import { count } from "console"
-import { SearchFilter } from "@/components/search-filter"
 
 export default function HomePage() {
   const [countries, setCountries] = useState<Country[]>([])
@@ -14,7 +13,6 @@ export default function HomePage() {
   const [error, setError] = useState<string | null>(null)
   const [search, setSearch] = useState("")
   const [region, setRegion] = useState("")
-
 
   useEffect(() => {
     async function fetchCountries() {
@@ -30,10 +28,9 @@ export default function HomePage() {
         setIsLoading(false)
       }
     }
-    
+
     fetchCountries()
   }, [])
-
 
   const filteredCountries = useMemo(() => {
     return countries.filter((country) => {
@@ -45,16 +42,17 @@ export default function HomePage() {
     })
   }, [countries, search, region])
 
-
   return (
     <div className="space-y-8">
       <motion.div
-        initial={{ opacity: 0, y: 20}}
-        animate={{ opacity: 1, y: 0}}
-        transition={{ duration: 0.5}}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <h1>Explore o Mundo</h1>
-        <p>Descubra informações sobre {countries.length > 0 ? countries.length : "250+"} países</p>
+        <h1 className="text-3xl font-bold mb-2 text-balance">Explore o Mundo</h1>
+        <p className="text-muted-foreground">
+          Descubra informações sobre {countries.length > 0 ? countries.length : "250+"} países
+        </p>
       </motion.div>
 
       <SearchFilter
@@ -62,12 +60,13 @@ export default function HomePage() {
         onSearchChange={setSearch}
         region={region}
         onRegionChange={setRegion}
-        />
+      />
 
       <CountryGrid
-      countries={filteredCountries}
-      isLoading={isLoading}
-      error={error}/>
+        countries={filteredCountries}
+        isLoading={isLoading}
+        error={error}
+      />
     </div>
   )
 }

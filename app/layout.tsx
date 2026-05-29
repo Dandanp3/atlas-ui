@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Header } from "@/components/header"
+import { Header } from '@/components/header'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -26,8 +26,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header/>
-          <main className="">
+          <Header />
+          <main className="container px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
             {children}
           </main>
         </ThemeProvider>
